@@ -1,11 +1,9 @@
 ---
-title: Markdown Extended Features
-published: 2024-05-01
-updated: 2024-11-29
-description: 'Read more about Markdown features in Fuwari'
-image: ''
-tags: [Demo, Example, Markdown, Fuwari]
-category: 'Examples'
+title: MR Meta Quest Tutorial
+published: 2025-08-12
+description: MR with Meta Quest 3
+tags: [MR, Unity, Meta Quest, Tutorial]
+category: Tutorial
 draft: false 
 ---
 
