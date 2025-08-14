@@ -2,7 +2,7 @@
 title: MR Meta Quest Tutorial
 published: 2025-08-12
 description: MR with Meta Quest 3
-tags: [MR, Unity, Meta Quest, Tutorial]
+tags: [MR, Unity, Meta Quest, Passthrough, Tutorial]
 category: Tutorial
 draft: false 
 ---
