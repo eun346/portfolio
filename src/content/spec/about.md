@@ -11,12 +11,12 @@ Currently, I am a member of the [MEIC Laboratory](https://www.meic-lab.com), whe
 
 
 ## Skills
-- Languages: Python, C++, Java, HTML, CSS, Astro, Markdown
-- 3D: Unity (XR), Blender
-- Others: ROS2, Arduino, Git
+- 'Languages': Python, C++, Java, HTML, CSS, Astro, Markdown
+- '3D': Unity (XR), Blender
+- 'Others': ROS2, Arduino, Git
 
 ## Contact Me
 > - [Email](mailto:eun346choi@gmai.com)
-> - [Linked In](https://www.linkedin.com/in/eunha-choi-644716367)
+> - [LinkedIn](https://www.linkedin.com/in/eunha-choi-644716367)
 > - [GitHub](https://github.com/eun346)  
 > - [Twitter](https://twitter.com/eun346)
