@@ -41,12 +41,12 @@ Before jumping into Unity, I clarified the essential concepts.
 
 ![Oculus Development](./images/oculusD.png)
 
-- Go to 'Edit → Project Settings → XR Plug-in Management', enable **Oculus** for both Windows and Android.
+- Go to `Edit → Project Settings → XR Plug-in Management`, enable **Oculus** for both Windows and Android.
 - Install [**Oculus Integration**](https://assetstore.unity.com/packages/tools/integration/oculus-integration-deprecated-82022?srsltid=AfmBOoqs3VykViopb9qVxMb3gFcYp88tIxOFRBEoxyUs_zHPXRYparKT) from the Unity Asset Store.
 <!-- ![Oculus Fixall](.) -->
--  Run 'Tools → Project Setup Tool → Fix All & Apply All' (this actually fixed more problems than I expected).
+-  Run `Tools → Project Setup Tool → Fix All & Apply All` (this actually fixed more problems than I expected).
 <!-- ![Oculus Android platform]() -->
-- **Switch platform** in 'File → Build Settings → Android'.
+- **Switch platform** in `File → Build Settings → Android`.
 
 💡 Why:
 Quest 3 runs Android. Without the XR plugin + Oculus package, Unity can’t talk to the headset — I learned this the hard way when nothing showed up in my first test build.
@@ -64,7 +64,7 @@ convenient, but slightly blurry visuals and longer builds — kind of frustratin
 more stable, faster builds
 
 - Connect Quest via USB-C cable
-- In Unity, go to 'files -> build settings' and click **Build and Run**.
+- In Unity, go to `files -> build settings` and click **Build and Run**.
 
 
 ## Passthrough
