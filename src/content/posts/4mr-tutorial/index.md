@@ -1,6 +1,6 @@
 ---
 title: MR Meta Quest Step-by-Step Tutorial
-published: 2025-08-12
+published: 2025-08-08
 description: MR with Meta Quest 3
 tags: [MR (Mixed Reality), Unity, Meta Quest, Tutorial]
 category: Tutorial

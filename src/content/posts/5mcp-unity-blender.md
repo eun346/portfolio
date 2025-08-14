@@ -1,8 +1,8 @@
 ---
-title: MR Meta Quest Tutorial
+title: MCP
 published: 2025-08-12
-description: MR with Meta Quest 3
-tags: [MR, Unity, Meta Quest, Tutorial]
+description: MCP
+tags: [MCP, Blender, Unity, 3D Modeling, Tutorial]
 category: Tutorial
 draft: false 
 ---
