@@ -29,9 +29,7 @@ Before jumping into Unity, I clarified the essential concepts:
 💡 *Tip:* MR is not just "turn on a camera." Understanding this early saves time when configuring cameras, layers, and interactions in Unity.
 
 # Step-by-Step Tutorials
-
 ## Setup
-
 ### 1. Enable Developer Mode
 
 ![Developer Mode on Meta Horizon](./setup1.png)
@@ -41,7 +39,6 @@ Before jumping into Unity, I clarified the essential concepts:
 
 💡 *Why:* Unity builds won’t run without this — basically telling the headset “I’m making stuff, not just playing games.”
 
----
 
 ### 2. Setting Up Unity for Oculus Development
 
@@ -54,7 +51,6 @@ Before jumping into Unity, I clarified the essential concepts:
 
 💡 *Why:* Quest 3 runs Android. Without XR plugin + Oculus package, Unity cannot communicate with the headset. I learned this the hard way when my first build just showed a black screen.
 
----
 
 ### 3. Connecting the Headset
 
@@ -63,7 +59,7 @@ Before jumping into Unity, I clarified the essential concepts:
 
 💡 *Why:* Fast iteration is key. Waiting 10 minutes per build kills momentum; 2 minutes keeps you in the flow.
 
----
+
 
 ## Passthrough Setup
 
@@ -80,7 +76,7 @@ Before jumping into Unity, I clarified the essential concepts:
 
 💡 *Why:* OVRCameraRig handles VR rendering, tracking, and input. Passthrough won’t work without enabling it.
 
----
+
 
 ### 5. Adding Passthrough Layer
 
@@ -93,7 +89,7 @@ Before jumping into Unity, I clarified the essential concepts:
 
 💡 *Why:* Underlay ensures the real world sits behind virtual objects. Overlay mode caused weird blending when I first tried it.
 
----
+
 
 ## Scene Scanning
 
@@ -106,7 +102,7 @@ Before jumping into Unity, I clarified the essential concepts:
 
 💡 *Why:* Passthrough shows the room, but virtual balls would pass through walls if there’s no mesh. Scene scanning creates a mesh for objects to collide with.
 
----
+
 
 ## Ball Interaction
 
@@ -121,11 +117,11 @@ Before jumping into Unity, I clarified the essential concepts:
 
 💡 *Why:* This turns Passthrough from “nice visual” into something interactive. Watching the ball bounce off my desk for the first time was oddly satisfying.
 
----
 
-## Lessons Learned
 
-### 8. What Broke
+# Lessons Learned
+
+## What Broke
 
 - AirLink → blurry visuals, slow loads.  
 - USB builds → still ~10 minutes sometimes.  
@@ -133,9 +129,9 @@ Before jumping into Unity, I clarified the essential concepts:
 
 💡 *Tip:* Check networking first — saves hours of frustration.
 
----
 
-### 9. Lessons & Extensions
+
+## Lessons & Extensions
 
 - **Interactive Navigation Cues:** Seeing balls collide with walls made me realize the same logic could overlay arrows indoors.  
 - **Spatial Data Visualization:** Accurate mesh alignment is key — could extend to real-time safety or maintenance overlays.  
@@ -143,6 +139,4 @@ Before jumping into Unity, I clarified the essential concepts:
 - **Furniture/Object Placement:** Adjusting spawn positions to avoid clipping revealed potential to preview items realistically.
 
 💡 *Takeaway:* These are not just wishlist ideas. They come directly from the problems I solved while setting up Passthrough, physics, and mesh scanning. Plus, seeing the first perfect bounce felt amazing.
-
----
 
