@@ -1,82 +1,74 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import I18nKey from '../i18n/i18nKey';
-	import { i18n } from '../i18n/translation';
-	import { getPostUrlBySlug } from '../utils/url-utils';
+import { onMount } from "svelte";
+import I18nKey from "../i18n/i18nKey";
+import { i18n } from "../i18n/translation";
+import { getPostUrlBySlug } from "../utils/url-utils";
 
-	// Props
-	export let sortedPosts: Post[] = [];
+export let sortedPosts: Post[] = [];
 
-	interface Post {
-		slug: string;
-		data: {
-			title: string;
-			tags: string[];
-			category?: string;
-			published: Date;
-		};
+interface Post {
+	slug: string;
+	data: {
+		title: string;
+		tags: string[];
+		category?: string;
+		published: Date;
+	};
+}
+
+interface Group {
+	year: number;
+	posts: Post[];
+}
+
+let tagFilters: string[] = [];
+let categoryFilters: string[] = [];
+let isUncategorizedFilter = false;
+
+const formatDate = (date: Date) =>
+	`${(date.getMonth() + 1).toString().padStart(2, "0")}-${date
+		.getDate()
+		.toString()
+		.padStart(2, "0")}`;
+
+const formatTag = (tags: string[]) => tags.map((t) => `#${t}`).join(" ");
+
+onMount(() => {
+	const params = new URLSearchParams(window.location.search);
+	tagFilters = params.getAll("tag");
+	categoryFilters = params.getAll("category");
+	isUncategorizedFilter = params.has("uncategorized");
+});
+
+$: filteredPosts = sortedPosts.filter((p) => {
+	const tagMatch = tagFilters.length
+		? p.data.tags?.some((t) => tagFilters.includes(t))
+		: true;
+	const categoryMatch = categoryFilters.length
+		? p.data.category && categoryFilters.includes(p.data.category)
+		: true;
+	const uncategorizedMatch = isUncategorizedFilter ? !p.data.category : true;
+
+	if (isUncategorizedFilter) {
+		return tagMatch && uncategorizedMatch;
 	}
 
-	interface Group {
-		year: number;
-		posts: Post[];
-	}
+	return tagMatch && categoryMatch;
+});
 
-	// Fix: Removed explicit types that can be inferred by TypeScript.
-	// Note: `[]` infers `any[]`. For type safety, `string[]` is better,
-	// but we remove it here to satisfy the lint rule.
-	let tagFilters: string[] = [];
-	let categoryFilters: string[] = [];
-	let isUncategorizedFilter = false; // The type `: boolean` was removed here.
-
-	// Helper functions
-	const formatDate = (date: Date) =>
-		`${(date.getMonth() + 1).toString().padStart(2, '0')}-${date
-			.getDate()
-			.toString()
-			.padStart(2, '0')}`;
-
-	const formatTag = (tags: string[]) => tags.map((t) => `#${t}`).join(' ');
-
-	onMount(() => {
-		const params = new URLSearchParams(window.location.search);
-		tagFilters = params.getAll('tag');
-		categoryFilters = params.getAll('category');
-		isUncategorizedFilter = params.has('uncategorized');
-	});
-
-	$: filteredPosts = sortedPosts.filter((p) => {
-		const tagMatch = tagFilters.length ? p.data.tags?.some((t) => tagFilters.includes(t)) : true;
-		const categoryMatch = categoryFilters.length
-			? p.data.category && categoryFilters.includes(p.data.category)
-			: true;
-		const uncategorizedMatch = isUncategorizedFilter ? !p.data.category : true;
-
-		if (isUncategorizedFilter) {
-			return tagMatch && uncategorizedMatch;
-		}
-
-		return tagMatch && categoryMatch;
-	});
-
-	$: groups = Object.entries(
-		filteredPosts.reduce(
-			(acc, post) => {
-				const year = post.data.published.getFullYear();
-				if (!acc[year]) {
-					acc[year] = [];
-				}
-				acc[year].push(post);
-				return acc;
-			},
-			{} as Record<number, Post[]>
-		)
-	)
-		.map(([year, posts]) => ({
-			year: Number.parseInt(year, 10),
-			posts,
-		}))
-		.sort((a, b) => b.year - a.year);
+$: groups = Object.entries(
+	filteredPosts.reduce(
+		(acc, post) => {
+			const year = post.data.published.getFullYear();
+			if (!acc[year]) acc[year] = [];
+			acc[year].push(post);
+			return acc;
+		},
+		{} as Record<number, Post[]>,
+	),
+)
+	.map(([year, posts]) => ({ year: Number.parseInt(year, 10), posts }))
+	.sort((a, b) => b.year - a.year);
 </script>
 
 <div class="card-base px-8 py-6">
