@@ -15,7 +15,7 @@ I've been diving into Mixed Reality (MR) recently, and I wanted to experiment wi
 - Unity: v.2020.3+
 - Meta Quest 3
 - USB-c Cable (for Building)
-- Oculus Integration Package from Unity Asset Store [Source]:(https://assetstore.unity.com/packages/tools/integration/oculus-integration-deprecated-82022?srsltid=AfmBOoqs3VykViopb9qVxMb3gFcYp88tIxOFRBEoxyUs_zHPXRYparKT)
+- [Oculus Integration Package from Unity Asset Store](https://assetstore.unity.com/packages/tools/integration/oculus-integration-deprecated-82022?srsltid=AfmBOoqs3VykViopb9qVxMb3gFcYp88tIxOFRBEoxyUs_zHPXRYparKT)
 
 I used 2020.3.1f Unity version. Passthrough and OVRManager behaves slightly differently depending on Unity version. Specifying this ensures anyone trying to replicate my steps hits the same quirks and solutions I did.
 

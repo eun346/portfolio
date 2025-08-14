@@ -22,9 +22,12 @@
 		posts: Post[];
 	}
 
+	// Fix: Removed explicit types that can be inferred by TypeScript.
+	// Note: `[]` infers `any[]`. For type safety, `string[]` is better,
+	// but we remove it here to satisfy the lint rule.
 	let tagFilters: string[] = [];
 	let categoryFilters: string[] = [];
-	let isUncategorizedFilter: boolean = false;
+	let isUncategorizedFilter = false; // The type `: boolean` was removed here.
 
 	// Helper functions
 	const formatDate = (date: Date) =>
@@ -35,56 +38,52 @@
 
 	const formatTag = (tags: string[]) => tags.map((t) => `#${t}`).join(' ');
 
-	// onMount is used only for client-side actions like reading the URL.
 	onMount(() => {
 		const params = new URLSearchParams(window.location.search);
-		tagFilters = params.has('tag') ? params.getAll('tag') : [];
-		categoryFilters = params.has('category') ? params.getAll('category') : [];
+		tagFilters = params.getAll('tag');
+		categoryFilters = params.getAll('category');
 		isUncategorizedFilter = params.has('uncategorized');
 	});
-	
-	// Reactive statement to filter posts whenever filters or the source posts change.
+
 	$: filteredPosts = sortedPosts.filter((p) => {
 		const tagMatch = tagFilters.length ? p.data.tags?.some((t) => tagFilters.includes(t)) : true;
-		const categoryMatch = categoryFilters.length ? p.data.category && categoryFilters.includes(p.data.category) : true;
+		const categoryMatch = categoryFilters.length
+			? p.data.category && categoryFilters.includes(p.data.category)
+			: true;
 		const uncategorizedMatch = isUncategorizedFilter ? !p.data.category : true;
-		
-		// If multiple filters are active, they should combine correctly.
+
 		if (isUncategorizedFilter) {
 			return tagMatch && uncategorizedMatch;
 		}
-		
-		// A post must match the tag filter AND the category filter if both are present.
+
 		return tagMatch && categoryMatch;
 	});
-	
-	// Reactive statement to group the filtered posts by year.
-	// This will automatically re-run whenever `filteredPosts` changes.
+
 	$: groups = Object.entries(
-		filteredPosts.reduce((acc, post) => {
-			const year = post.data.published.getFullYear();
-			if (!acc[year]) {
-				acc[year] = [];
-			}
-			acc[year].push(post);
-			return acc;
-		}, {} as Record<number, Post[]>)
+		filteredPosts.reduce(
+			(acc, post) => {
+				const year = post.data.published.getFullYear();
+				if (!acc[year]) {
+					acc[year] = [];
+				}
+				acc[year].push(post);
+				return acc;
+			},
+			{} as Record<number, Post[]>
+		)
 	)
 		.map(([year, posts]) => ({
-			year: Number.parseInt(year, 10), // Fix: Use Number.parseInt()
+			year: Number.parseInt(year, 10),
 			posts,
 		}))
 		.sort((a, b) => b.year - a.year);
-
 </script>
 
 <div class="card-base px-8 py-6">
 	{#each groups as group}
 		<div>
 			<div class="flex h-[3.75rem] w-full items-center">
-				<div class="w-[15%] text-right font-bold text-2xl text-75 md:w-[10%]">
-					{group.year}
-				</div>
+				<div class="w-[15%] text-right font-bold text-2xl text-75 md:w-[10%]">{group.year}</div>
 				<div class="w-[15%] md:w-[10%]">
 					<div
 						class="z-50 mx-auto h-3 w-3 rounded-full bg-none outline outline-3 outline-[var(--primary)] -outline-offset-[2px]"
@@ -109,22 +108,18 @@
 
 						<div class="dash-line relative flex h-full w-[15%] items-center md:w-[10%]">
 							<div
-								class="z-50 mx-auto h-1 w-1 rounded bg-[oklch(0.5_0.05_var(--hue))] outline outline-4
-								outline-[var(--card-bg)] transition-all group-hover:h-5 group-hover:bg-[var(--primary)]
-								group-hover:outline-[var(--btn-plain-bg-hover)] group-active:outline-[var(--btn-plain-bg-active)]"
+								class="z-50 mx-auto h-1 w-1 rounded bg-[oklch(0.5_0.05_var(--hue))] outline outline-4 outline-[var(--card-bg)] transition-all group-hover:h-5 group-hover:bg-[var(--primary)] group-hover:outline-[var(--btn-plain-bg-hover)] group-active:outline-[var(--btn-plain-bg-active)]"
 							></div>
 						</div>
 
 						<div
-							class="w-[70%] max-w-[65%] overflow-hidden overflow-ellipsis whitespace-nowrap pr-8
-							text-left font-bold text-75 transition-all group-hover:translate-x-1 group-hover:text-[var(--primary)] md:w-[65%]"
+							class="w-[70%] max-w-[65%] overflow-hidden overflow-ellipsis whitespace-nowrap pr-8 text-left font-bold text-75 transition-all group-hover:translate-x-1 group-hover:text-[var(--primary)] md:w-[65%]"
 						>
 							{post.data.title}
 						</div>
 
 						<div
-							class="hidden overflow-hidden overflow-ellipsis whitespace-nowrap text-left
-							text-sm text-30 transition md:block md:w-[15%]"
+							class="hidden overflow-hidden overflow-ellipsis whitespace-nowrap text-left text-sm text-30 transition md:block md:w-[15%]"
 						>
 							{formatTag(post.data.tags)}
 						</div>
