@@ -7,7 +7,7 @@ category: Tutorial
 draft: false 
 ---
 
-## GitHub Repository Cards
+## Mixed Reality on Meta Quest 3
 
 I've been diving into Mixed Reality (MR) recently, and I wanted to experiment with a simple Passthrough prototype on my Meta Quest 3. The goal was simple but oddly satisfying: see my real room through the headset, spawn virtual balls, and watch them bounce off walls and floors. Honestly, it felt a bit like playing catch with my own furniture. This post is my personal developer log — not a polished tutorial. I’ll walk through what I did, why I did it, what broke (and it did), and what I learned along the way.
 
@@ -28,3 +28,10 @@ Before jumping into Unity, I clarified the essential concepts.
 💡Focus: MR is not just "turn on a camera." Understanding this early saves time when configuring cameras, layers, and interactions in Unity.
 
 ## Step-by-Step Tutorials
+
+# Setup
+1. Enable Developer Mode
+
+- Create a Meta Developer Account in [Meta].(https://developers.meta.com/horizon/sign-up/)
+- Turn on Developer Mode in the Meta Horizon app.
+
