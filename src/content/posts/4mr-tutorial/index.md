@@ -44,7 +44,7 @@ Before jumping into Unity, I clarified the essential concepts.
 
 - Go to **Edit → Project Settings → XR Plug-in Management**, enable **Oculus** for both Windows and Android.
 - Install [**Oculus Integration**](https://assetstore.unity.com/packages/tools/integration/oculus-integration-deprecated-82022?srsltid=AfmBOoqs3VykViopb9qVxMb3gFcYp88tIxOFRBEoxyUs_zHPXRYparKT) from the Unity Asset Store.
-![Oculus Fixall](.)
+<!-- ![Oculus Fixall](.) -->
 -  Run **Tools → Project Setup Tool → Fix All & Apply All** (this actually fixed more problems than I expected).
 - **Switch platform** in **File → Build Settings → Android**.
 
