@@ -32,6 +32,8 @@ Before jumping into Unity, I clarified the essential concepts.
 # Setup
 1. Enable Developer Mode
 
-- Create a Meta Developer Account in [Meta].(https://developers.meta.com/horizon/sign-up/)
-- Turn on Developer Mode in the Meta Horizon app.
+- Create a Meta Developer Account in [Meta](https://developers.meta.com/horizon/sign-up/)
+- Turn on Developer Mode in the Meta Horizon app
+
+
 
