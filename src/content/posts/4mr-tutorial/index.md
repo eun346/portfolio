@@ -108,7 +108,7 @@ Prevents Unity’s default skybox or other background from showing through. A qu
 
 
 ## Video
-<iframe width="100%" height="468" src="https://youtu.be/DnNl0YZpAPk" title="Passthrough Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/DnNl0YZpAPk" title="Passthrough Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
 
@@ -125,7 +125,7 @@ Prevents Unity’s default skybox or other background from showing through. A qu
 Plane and Volume in `OVRSceneManager` enables scene understanding so your virtual objects can collide with real-world walls/floors. Invisible prefabs keep the real-world mesh hidden but functional. Without enabling scene support in `OVRCameraRig`, the headset won’t actually run scene scanning.
 
 ## Video
-<iframe width="100%" height="468" src="https://youtu.be/sJj2BqZMWRE" title="Scan Space Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/sJj2BqZMWRE" title="Scan Space Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
 
@@ -180,7 +180,7 @@ The Rigidbody and Physics Material make the ball actually bounce instead of roll
 Matching Unity’s physics update to 90 Hz reduces jitter in MR, and linking the prefab ensures that pressing the trigger spawns bouncy balls.
 
 ## Video
-<iframe width="100%" height="468" src="https://youtu.be/-LsH-tnGQBY" title="Ball Interaction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/-LsH-tnGQBY" title="Ball Interaction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
 

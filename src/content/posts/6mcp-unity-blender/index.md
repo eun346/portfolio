@@ -87,7 +87,7 @@ This is where you actually link Blender’s context to Claude. It felt surreal s
 This step gives Claude the bridge it needs to process MCP requests. Took me a few tries before it clicked.
 
 ### Video
-<iframe width="100%" height="468" src="https://youtu.be/G4hbDDk09cM" title="blender mcp Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/G4hbDDk09cM" title="blender mcp Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
 
@@ -122,7 +122,7 @@ This step gives Claude the bridge it needs to process MCP requests. Took me a fe
 💡 *Why*: Auto-setup edits the MCP client config automatically. Saves time and avoids manually editing JSON files.
 
 ## Video
-<iframe width="100%" height="468" src="https://youtu.be/Kndy2dcEQU4" title="unity mcp Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/Kndy2dcEQU4" title="unity mcp Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
 
