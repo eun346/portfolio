@@ -15,7 +15,7 @@ I've been diving into Mixed Reality (MR) recently, and I wanted to experiment wi
 - Unity: v.2020.3+
 - Meta Quest 3
 - USB-c Cable (for Building)
-- [Oculus Integration Package from Unity Asset Store](https://assetstore.unity.com/packages/tools/integration/oculus-integration-deprecated-82022?srsltid=AfmBOoqs3VykViopb9qVxMb3gFcYp88tIxOFRBEoxyUs_zHPXRYparKT)
+- [Oculus Integration](https://assetstore.unity.com/packages/tools/integration/oculus-integration-deprecated-82022?srsltid=AfmBOoqs3VykViopb9qVxMb3gFcYp88tIxOFRBEoxyUs_zHPXRYparKT) Package from Unity Asset Store
 
 I used 2020.3.1f Unity version. Passthrough and OVRManager behaves slightly differently depending on Unity version. Specifying this ensures anyone trying to replicate my steps hits the same quirks and solutions I did.
 
@@ -33,7 +33,7 @@ Before jumping into Unity, I clarified the essential concepts.
 ## Setup
 ### 1. Enable Developer Mode
 
-![Developer Mode on Meta Horizon](./images/setup1.png)
+![Developer Mode on Meta Horizon](./images/1setup1.png)
 
 - Create a **Meta Developer Account** in [Meta](https://developers.meta.com/horizon/sign-up/).
 - Turn on **Developer Mode** in the Meta Horizon app
@@ -41,13 +41,13 @@ Before jumping into Unity, I clarified the essential concepts.
 
 ### 2. Setting Up Unity for Oculus Development
 
-![Oculus Development](./images/oculusD.png)
+![Oculus Development](./images/2setup2.png)
 
 - Go to `Edit → Project Settings → XR Plug-in Management`, enable **Oculus** for both Windows and Android.
 - Install [**Oculus Integration**](https://assetstore.unity.com/packages/tools/integration/oculus-integration-deprecated-82022?srsltid=AfmBOoqs3VykViopb9qVxMb3gFcYp88tIxOFRBEoxyUs_zHPXRYparKT) from the Unity Asset Store.
-<!-- ![Oculus Fixall](.) -->
+![Oculus Fixall](./images/3setup3.png)
 -  Run `Tools → Project Setup Tool → Fix All & Apply All` (this actually fixed more problems than I expected).
-<!-- ![Oculus Android platform]() -->
+![Oculus Android platform](./images/4setup4.png)
 - **Switch platform** in `File → Build Settings → Android`.
 
 💡 Why:
@@ -56,6 +56,7 @@ Quest 3 runs Android. Without the XR plugin + Oculus package, Unity can’t talk
 ---
 
 ## Connecting the Headset & Building
+![method1](./images/5method1.png)
 ### Method 1: **AirLink (Wireless)**
 convenient, but slightly blurry visuals and longer builds — kind of frustrating when you’re in the zone
 
@@ -63,6 +64,7 @@ convenient, but slightly blurry visuals and longer builds — kind of frustratin
 - Connect Quest to PC via AirLink
 - Run from Unity. (May cause longer load times)
 
+![method2](./images/6method2.png)
 ### Method 2 (Recommended): **USB-C (Wired)** 
 more stable, faster builds
 
@@ -73,6 +75,7 @@ more stable, faster builds
 
 ## Passthrough
 ### 1. Camera Configuration
+![camera](./images/7passthrough1.png)
 - Delete the default `Main Camera`.
 - Add `OVRCameraRig` prefab.
 - In `OVRManager` (inside OVRCameraRig), set:
@@ -162,7 +165,7 @@ Matching Unity’s physics update to 90 Hz reduces jitter in MR, and linking the
 ---
 
 # Errors
-- AirLink → blurry visuals, slower loads (ugh).
+- AirLink → blurry visuals, slower loads.
 - USB builds → still ~10 min sometimes.
 - Unity sometimes didn’t detect Quest if Wi-Fi was off or connected to different Wi-Fi with your computer.
 
@@ -176,3 +179,5 @@ Matching Unity’s physics update to 90 Hz reduces jitter in MR, and linking the
 - **Room-Aware Game Mechanics**: Physics interactions with walls suggest gameplay mechanics: your real room can become the level itself.
 
 - **Furniture / Object Placement**: Adjusting spawn positions to avoid clipping with walls/furniture revealed the potential to preview objects realistically in your own space.
+
+---
