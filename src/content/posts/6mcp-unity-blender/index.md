@@ -37,6 +37,7 @@ Key ideas I had to wrap my head around:
 ## Setup
 ### 1. UV Package Manager
 This is required for both Blender and Unity MCP.  
+![uv](./images/1setup.png)
 - Open terminal and install UV Package Manager.  
 - If the first command failed, switch to the alternative one provided in the docs.
 
@@ -46,6 +47,7 @@ MCP depends on the package manager for dependency handling. Without this, nothin
 
 ## Blender MCP Setup
 ### 1. Addon Installation
+![addon](./images/2blender1.png)
 - Download **addon.py** from [Blender-MCP GitHub](https://github.com/ahujasid/blender-mcp).
 - In Blender, go to `Edit → Preferences → Add-ons`.
 - Click **Install from Disk** and select the addon.py file.
@@ -56,6 +58,7 @@ This gives Blender a sidebar tab for MCP. Without the addon, Blender doesn’t k
 
 
 ### 2. Blender MCP Tab
+![blender_mcp](./images/3blender2.png)
 - Open the **3D View sidebar** (press `N`).  
 - Find the **BlenderMCP** tab.  
 - Check *Poly Haven* if you want asset streaming.  
@@ -65,6 +68,7 @@ This gives Blender a sidebar tab for MCP. Without the addon, Blender doesn’t k
 This is where you actually link Blender’s context to Claude. It felt surreal seeing AI recognize what was in my scene.
 
 ### 3. Claude AI Config
+![claude-blender](./images/4blender3.png)
 - Open **Claude AI App** and go `Settings → Developer → Edit Config`.  
 - Copy and paste the below code in **claude_desktop_config** file.
 ```json
@@ -83,20 +87,24 @@ This is where you actually link Blender’s context to Claude. It felt surreal s
 This step gives Claude the bridge it needs to process MCP requests. Took me a few tries before it clicked.
 
 ### Video
-
+<iframe width="100%" height="468" src="https://youtu.be/G4hbDDk09cM" title="blender mcp Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
 
 ## Unity MCP Setup
 ### 1. Python Path Setup (Windows)
+![windowpath](./images/5unity1.png)
 - Open Python file and click “Open File Location”.
 - Copy the file path.
+![environ](./images/6unity2.png)
 - Open “Edit the system environment variables”.
+![environment setting](./images/6unity2.png)
 - Click Environment Variables.
 - Click Path in System variables and Edit.
 - Paste the file path.
 
 ### 2. Package Installation
+![packm](./images/7unity4.png)
 - In Unity, open `Window → Package Manager`.  
 - `Click + → Add package from Git URL...`.  
 - Paste the link: https://github.com/CoplayDev/unity-mcp.git?path=/UnityMcpBridge.
@@ -105,6 +113,7 @@ This step gives Claude the bridge it needs to process MCP requests. Took me a fe
 💡 *Why*: MCP for Unity isn’t built-in — GitHub package installation is the only way to get it.
 
 ## 3. MCP Auto-Setup
+![mcp_auto](./images/8unity5.png)
 - Go `Window → Unity MCP`.
 - Click Auto-Setup.
 - Look for a green status indicator🟢 and "Connected ✓". (This attempts to modify the MCP Client's config file automatically).
@@ -113,6 +122,7 @@ This step gives Claude the bridge it needs to process MCP requests. Took me a fe
 💡 *Why*: Auto-setup edits the MCP client config automatically. Saves time and avoids manually editing JSON files.
 
 ## Video
+<iframe width="100%" height="468" src="https://youtu.be/Kndy2dcEQU4" title="unity mcp Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
 
