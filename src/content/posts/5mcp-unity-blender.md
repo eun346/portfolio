@@ -1,6 +1,6 @@
 ---
 title: MCP
-published: 2025-08-12
+published: 2025-08-11
 description: MCP
 tags: [MCP, Blender, Unity, 3D Modeling, Tutorial]
 category: Tutorial
