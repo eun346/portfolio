@@ -82,6 +82,7 @@ more stable, faster builds
     - Hand Tracking Support → “Controllers and Hands”
     - Passthrough Support → “Supported”
     - Enable Passthrough → Checked
+![controller](./images/8passthrough2.png)
 - Add `OVRControllerPrefab` and `OVRHandPrefab` to Right/LeftHandAnchor.
 - For `RightHandPrefab`, change to **hand right** in components: **OVR Hand**, **OVR Skeleton** and **OVR Mesh comp**.
 
@@ -89,6 +90,7 @@ more stable, faster builds
 The default `Main Camera` does not support VR tracking or Passthrough. So we have to replce the deafault `Main Camera` into `OVRCameraRig` which handels stero rendering, tracking, and device input. Changing settings in `OVRManager` enables both controllers and hands in MR while turing on Passthrough. `OVRControllerPrefab` and `OVRHandPrefab` provide controller/hand models so you can actually see and interact with them in MR.
 
 ### 2. Adding the Passthrough Layer
+![passthrough layer](./images/9passthrough3.png)
 - Create an empty object `Passthrough`.
 - Reset its Transform.
 - Add **OVR Passthrough Layer** component inside Passthrough.
@@ -97,29 +99,39 @@ The default `Main Camera` does not support VR tracking or Passthrough. So we hav
 💡 Why:
 Underlay makes the real-world view sit behind virtual objects, avoiding weird overlaps.
 
-## 3. Other Settings
+![centereyeanchor](./images/10passthrough4.png)
 - In `CenterEyeAnchor`, set Clear Flags to **Solid Color** and backaground to **black**.
 - Create 3D object `Cube` in Hierarchy and adjust the position as needed.
 
 💡 Why:
 Prevents Unity’s default skybox or other background from showing through. A quick test object to confirm Passthrough + rendering are working.
 
+
+## Video
+<iframe width="100%" height="468" src="https://youtu.be/DnNl0YZpAPk" title="Passthrough Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ---
 
 ## Scan Space
 ### 1.OVR Settings
+![ovrmanager](./images/11scan1.png)
 - Add `OVRSceneManager`.
     1. Assign **Plane (OVR Scene Anchor)** to *Plane Prefab* and **Volume (OVR Scene Anchor)** to *Volume Prefab* (plane mesh & volume).
     2. Assign **Invisible Plane (OVR Scene Anchor)** to *Plane Prefab* and **Invisible Volume (OVR Scene Anchor)** to *Volume Prefab* (plane mesh & volume). — *recommended*.
+![ovrcamerarig](./images/12scan2.png)
 - In `OVRCameraRig`, change to **Supported** in scene support.
 
 💡 Why: 
 Plane and Volume in `OVRSceneManager` enables scene understanding so your virtual objects can collide with real-world walls/floors. Invisible prefabs keep the real-world mesh hidden but functional. Without enabling scene support in `OVRCameraRig`, the headset won’t actually run scene scanning.
 
+## Video
+<iframe width="100%" height="468" src="https://youtu.be/sJj2BqZMWRE" title="Scan Space Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ---
 
 ## Ball Interaction
-### 1. BallInteraction Script
+### 1. Ball Interaction Script
+![ballcode](./images/13ball1.png)
 - Go `RightHandAnchor → Add Component` and create a **BallInteraction** component.
 - Copy and paste the below script.
 ```csharp
@@ -146,27 +158,35 @@ public class BallInteraction : MonoBehaviour
 💡 Why: 
 This script lets you spawn and throw balls from your right hand trigger.
 
-### 2. Bounce Sphere
+### 2. Physics
+![bounce](./images/14ball2.png)
 - Create a Physic Material `Bounce` (Bounciness=1) in Assets folder.
+![bounceSphere](./images/15ball3.png)
 - Create a 3D object sphere `Bounce Sphere` (scale 0.1, 0.1, 0.1) and add **Rigidbody**.
 - Go `Bounce Sphere → Sphere Collider → Material` and assign `Bounce`.
+![removesphere](./images/16ball4.png)
 - Add `Bounce Sphere` in Asset folder and remove it in Sample Scene.
+![right](./images/17ball5.png)
+- Go `RightHandAnchor → Ball Interaction → Prefab` and assign `Bounce Sphere`.
 
 💡 Why: 
 The Rigidbody and Physics Material make the ball actually bounce instead of rolling lifelessly, and saving it as a prefab keeps spawning clean and reusable.
 
-### 3. Other Settings
+![time](./images/18ball6.png)
 - Go `Edit → Project Settings → Time` and set **Fixed TImeStep = 0.0083333**.
-- Go `RightHandAnchor → Ball Interaction → Prefab` and assign `Bounce Sphere`.
+
 
 💡 Why: 
 Matching Unity’s physics update to 90 Hz reduces jitter in MR, and linking the prefab ensures that pressing the trigger spawns bouncy balls.
+
+## Video
+<iframe width="100%" height="468" src="https://youtu.be/-LsH-tnGQBY" title="Ball Interaction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
 
 # Errors
 - AirLink → blurry visuals, slower loads.
-- USB builds → still ~10 min sometimes.
+- USB builds → load more than 10 mins sometimes.
 - Unity sometimes didn’t detect Quest if Wi-Fi was off or connected to different Wi-Fi with your computer.
 
 ---
