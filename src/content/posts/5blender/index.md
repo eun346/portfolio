@@ -2,13 +2,11 @@
 title: Blender Tutorial
 published: 2025-08-07
 description: Blender Basics & Floor Plan
-image: ![blender](https://www.google.com/url?sa=i&url=https%3A%2F%2Ffreebiesupply.com%2Flogos%2Fblender-logo-2%2F&psig=AOvVaw1IY95boywib55J0J0CRzIp&ust=1755765684960000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNjcoIT_mI8DFQAAAAAdAAAAABAE)
+image: "./images/1Blender1-1.png"
 tags: [Blender, 3D Modeling, Floor Plan]
 category: Tutorial
 draft: false 
 ---
-
-> Cover Image Source: ![Freebie Supply](https://www.google.com/url?sa=i&url=https%3A%2F%2Ffreebiesupply.com%2Flogos%2Fblender-logo-2%2F&psig=AOvVaw1IY95boywib55J0J0CRzIp&ust=1755765684960000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNjcoIT_mI8DFQAAAAAdAAAAABAE)
 
 # My Blender Tutorial Experience
 I recently dove into 3D modeling with **Blender**, a free yet insanely powerful tool. My goal? Prepare for future **Unity** projects and finally get comfortable creating things from scratch in 3D. To kick things off, I followed two YouTube tutorials:
