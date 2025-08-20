@@ -2,14 +2,16 @@
 title: Blender Tutorial
 published: 2025-08-07
 description: Blender Basics & Floor Plan
+image: ![blender](https://www.google.com/url?sa=i&url=https%3A%2F%2Ffreebiesupply.com%2Flogos%2Fblender-logo-2%2F&psig=AOvVaw1IY95boywib55J0J0CRzIp&ust=1755765684960000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNjcoIT_mI8DFQAAAAAdAAAAABAE)
 tags: [Blender, 3D Modeling, Floor Plan]
 category: Tutorial
 draft: false 
 ---
 
-# My Blender Tutorial Experience
-Recently, I decided to dive into 3D modeling using **Blender**, a free and powerful 3D creation tool, as preparation for future **Unity** projects. I followed two excellent YouTube tutorials:  
+> Cover Image Source: ![Freebie Supply](https://www.google.com/url?sa=i&url=https%3A%2F%2Ffreebiesupply.com%2Flogos%2Fblender-logo-2%2F&psig=AOvVaw1IY95boywib55J0J0CRzIp&ust=1755765684960000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNjcoIT_mI8DFQAAAAAdAAAAABAE)
 
+# My Blender Tutorial Experience
+I recently dove into 3D modeling with **Blender**, a free yet insanely powerful tool. My goal? Prepare for future **Unity** projects and finally get comfortable creating things from scratch in 3D. To kick things off, I followed two YouTube tutorials:
 - [Blender Beginner Tutorial](https://www.youtube.com/watch?v=Ci3Has4L5W4)  
 - [Blender Floor Plan Tutorial](https://www.youtube.com/watch?v=94kAIpRnhcY)  
 
@@ -25,7 +27,7 @@ Before starting, I clarified essential 3D modeling concepts.
 | `Instance` | A duplicate of an object sharing the same underlying data as the original. |
 | `Shader`   | A program controlling how light interacts with a surface, affecting color, reflection, transparency, and emission. In Blender, it’s often used interchangeably with `material`. |
 
-💡 *Why this matters:* Without a mental model, Blender can feel overwhelming. Once I understood mesh editing and modifiers, everything started to make sense.
+💡 *Why it matters*: Blender can feel like a maze at first. Understanding meshes, modifiers, and basic geometry gave me a clear roadmap—I suddenly knew what to click, move, and tweak.
 
 ---
 
@@ -37,16 +39,7 @@ Before starting, I clarified essential 3D modeling concepts.
 
 ---
 
-# Step-by-Step Experience
-
-## Tutorial 1: [Blender Beginner Tutorial](https://www.youtube.com/watch?v=Ci3Has4L5W4)
-This tutorial covered the fundamentals:  
-- Navigating Blender’s viewport  
-- Useful shortcuts for efficiency  
-- Differences between **Edit Mode** and **Object Mode**  
-- Building a simple object step by step  
-
-### Essential Shortcuts
+# Essential Shortcuts
 | Shortcut | Action |
 | -------- | ------ |
 | `Middle Mouse` | Orbit around scene |
@@ -68,6 +61,16 @@ For **Object Mode**:
 
 💡 *Tip:* For more shortcuts, check Blender’s [Keymap Documentation](https://docs.blender.org/manual/en/latest/interface/keymap/introduction.html).
 
+---
+
+# Step-by-Step Experience
+
+## Tutorial 1: [Blender Beginner Tutorial](https://www.youtube.com/watch?v=Ci3Has4L5W4)
+This tutorial covered the fundamentals:  
+- Navigating Blender’s viewport  
+- Differences between **Edit Mode** and **Object Mode**  
+- Building a simple object step by step  
+
 ### Recommended Setup
 - Go to `Edit > Preferences > Interface` and adjust the **Resolution Scale**  
 💡 *Why:* Makes Blender easier to work with depending on your screen size.  
@@ -83,10 +86,10 @@ For **Object Mode**:
 ### Making a Cookie
 
 #### 1. Cookie Base
-- Add a **Cylinder** (`Shift + A > Mesh > Cylinder`)  
-- Scale (`S`) to flatten into a cookie shape  
-- Smooth surface: Right-click → `Shade Smooth`  
-- Rename to **Cookie** in the Outliner  
+- Add a **Cylinder** (`Shift + A > Mesh > Cylinder`).
+- Scale (`S`) to flatten into a cookie shape.
+- Right-click → `Shade Smooth` for a softer look.
+- Rename it Cookie in the Outliner to stay organized.
 
 #### 2. Chocolate Chips
 - Add a **UV Sphere** (`Shift + A > Mesh > UV Sphere`)  
@@ -119,8 +122,6 @@ This tutorial focused on combining objects and creating a full scene:
 - Modeling floors and walls  
 - Applying materials, lighting, and render settings  
 
-### 3D Floor Plan Creation
-
 #### 1. Setup
 - Download a floor plan image  
 - Open Blender, select all (`A`) and delete (`X`) default objects  
@@ -144,6 +145,9 @@ This tutorial focused on combining objects and creating a full scene:
 - Save your work (`Ctrl + S`)  
 
 ---
+
+# Summary
+At the end of the day, it wasn’t just about a cookie or a floor plan. These tutorials taught me how to bring any idea to life in 3D. Modeling, texturing, lighting—once you get the hang of these, you’re ready for bigger projects, whether it’s games, architectural visualization, or AR. Honestly, seeing something I imagined appear on screen made me even more excited to dive into Unity. In 3D, the only limit really is your imagination.
 
 💡 *Final Tip:* Always organize objects, name them clearly, and save iterations frequently. This keeps projects manageable as scenes get complex.
 
