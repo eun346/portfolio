@@ -84,32 +84,47 @@ This tutorial covered the fundamentals:
 ### Making a Cookie
 
 #### 1. Cookie Base
+![cookieBase](./images/1Blender1-1.png)
 - Add a **Cylinder** (`Shift + A > Mesh > Cylinder`).
 - Scale (`S`) to flatten into a cookie shape.
 - Right-click → `Shade Smooth` for a softer look.
+![rename](./images/2Blender1-2.png)
 - Rename it Cookie in the Outliner to stay organized.
 
 #### 2. Chocolate Chips
+![uvSphere](./images/3Blender1-3.png)
 - Add a **UV Sphere** (`Shift + A > Mesh > UV Sphere`)  
 - Scale down (`S`) to chip size  
 - Position using **Move** (`G`)  
+![duplicate](./images/4Blender1-4.png)
 - Duplicate chips (`Shift + D`) and place around the cookie  
 
 #### 3. Tray
 - Add a **Cube** (`Shift + A > Mesh > Cube`)  
-- Scale and move to sit under cookie  
+- Scale and move to sit under cookie
+1[insetFace](./images/5Blender1-5.png)
 - Enter **Edit Mode** (`Tab`), select top face, use **Inset Faces** (`I`)  
-- Extrude inner face down (`E`) to create tray depth  
+![extrude](./images/6Blender1-6.png)
+![extrude2](./images/7Blender1-7.png)
+- Extrude inner face down (`E`) to create tray depth
+![move](./images/8Blender1-8.png)
+- Move the tray under the cookie.
 
 #### 4. Materials & Colors
+![color](./images/9Blender1-9.png)
 - Add material in **Material Properties** → `New`  
 - Choose **Base Color** for cookie, chips, and tray  
+![link](./images/10Blender1-10.png)
 - To quickly assign the same material, select chips → last chip with material → `Ctrl + L > Materials`  
 
 #### 5. Lighting & Rendering
+![renderview](./images/11Blender1-11.png)
+- Click **Viewport Shading: Rendered**
 - Delete default light → Add **Area Light** (`Shift + A > Light > Area`)  
+![camera](./images/12Blender1-12.png)
 - Position camera (`0` on numpad, enable **Camera to View**)  
 - Set render engine to **Cycles** for realism  
+![image](./images/13Blender1-13.png)
 - Render with `F12` → Save via `Image > Save As`  
 
 ---
