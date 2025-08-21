@@ -2,7 +2,7 @@
 title: Blender Tutorial
 published: 2025-08-07
 description: Blender Basics & Floor Plan
-image: "./images/1Blender1-1.png"
+image: "./images/0cover.png"
 tags: [Blender, 3D Modeling, Floor Plan]
 category: Tutorial
 draft: false 
@@ -59,16 +59,6 @@ For **Object Mode**:
 
 💡 *Tip:* For more shortcuts, check Blender’s [Keymap Documentation](https://docs.blender.org/manual/en/latest/interface/keymap/introduction.html).
 
----
-
-# Step-by-Step Experience
-
-## Tutorial 1: [Blender Beginner Tutorial](https://www.youtube.com/watch?v=Ci3Has4L5W4)
-This tutorial covered the fundamentals:  
-- Navigating Blender’s viewport  
-- Differences between **Edit Mode** and **Object Mode**  
-- Building a simple object step by step  
-
 ### Recommended Setup
 - Go to `Edit > Preferences > Interface` and adjust the **Resolution Scale**  
 💡 *Why:* Makes Blender easier to work with depending on your screen size.  
@@ -81,7 +71,15 @@ This tutorial covered the fundamentals:
 
 ---
 
-### Making a Cookie
+# Step-by-Step Experience
+
+## Tutorial 1: [Blender Beginner Tutorial](https://www.youtube.com/watch?v=Ci3Has4L5W4)
+This tutorial covered the fundamentals:  
+- Navigating Blender’s viewport  
+- Differences between **Edit Mode** and **Object Mode**  
+- Building a simple object step by step  
+
+---
 
 #### 1. Cookie Base
 ![cookieBase](./images/1Blender1-1.png)
@@ -138,24 +136,53 @@ This tutorial focused on combining objects and creating a full scene:
 #### 1. Setup
 - Download a floor plan image  
 - Open Blender, select all (`A`) and delete (`X`) default objects  
-- Import image → Creates an Empty object  
+- `Import image → Creates an Empty object`  
+![img](./images/15Blender2-1.png)
 - Reset location & rotation: `Alt + G`, `Alt + R`  
-- Switch to Top Orthographic View (`7` on numpad)  
+- Switch to Top Orthographic View (`7` on numpad or click z in xyz)  
 - Set **Units** to Metric (Scene Properties → Units → Metric → Meters)  
 
 #### 2. Floor & Walls
-- Add **Plane** → Rename to **Floor**  
-- Set dimensions in Item Sidebar → Apply scale (`Ctrl + A > Scale`)  
-- In **Edit Mode**, delete face (`X > Only Faces`)  
-- Extrude vertices (`E`) along X/Y to match outer walls  
-- Extrude inner walls for rooms  
+![plane](./images/16Blender2-2.png)
+- Add **Plane** (`Shift + A > Mesh > Plane`)
+![scale](./images/17Blender2-3.png)
+- Rename to **Walls** and set dimensions in Item Sidebar → Apply scale (`Ctrl + A > Scale`) 
+![wallsOrigin](./images/18Blender2-4.png)
+- Click `walls` and set origin (`Shift + S > Cursor to Selected` & `Right Click > Set Origin > Origin to 3D Cursor`) and clear any translation by `Alt + G`
+![onlyface](./images/19Blender2-5.png)
+- In **Edit Mode**, delete face (`X > Only Faces`)
+- In **Object Mode**, move the **floor plan image** fit right in the **Wall** line
+- Delete three vertices in Walls (`X > Vertices`)
+![extrudevertices]
+![vertices](./images/20Blender2-6.png)
+- **In Edit Mode**, extrude vertices (`E`) along X/Y to match outer walls
+- Extrude inner walls for rooms too
+![floor](./images/21Blender2-7.png)
+- Duplicate Walls and rename the duplicated one as **Floor** and hide the **Walls** by clicking eye icon
+- For the same floor, delete some overlap unnecessary vertices
+- For each room, select all of the vertices and make a face(`F`).
 
 #### 3. Finalizing & Rendering
-- Duplicate floor → rename **Background**, delete faces, extrude outline  
-- Hide Floor/Background, select Walls → Extrude upwards along Z-axis (`E`)  
-- Add **Solidify Modifier** (Complex mode, adjust thickness)  
-- Check **Face Orientation** (Blue = correct, Red = flipped) → Fix flipped faces (`Shift + N`)  
-- Save your work (`Ctrl + S`)  
+![background](./images/22Blender2-8.png)
+- Duplicate floor (`Shift + D > Right Click`) and rename **Background**
+- Hide Floor and Walls
+- In Background, delete all inner vertices  
+- Extrude everything and scale (`A > E > S`)
+![zextrude](./images/23Blender2-10.png)
+- Hide Floor and Background. Select Walls → Extrude upwards along Z-axis (`E > Z`)  
+![ori](./images/24Blender2-11.png)
+- See walls' orientation (`Overlays menu > Face Orientation`)
+Modifier. 
+![sol](./images/25Blender2-12.png)
+![mod](./images/26Blender2-13.png)
+- Add **Solidify Modifier** (`Modifier > Add Modifier > Solidify`) and change some settings (Mode Complex, Thickness) 
+- Click Monitor Icon in Modifier
+![flip](./images/27Blender2-14.png)
+- Fix flipped faces (`Shift + N`) (Blue = outter, Red = inner)
+- Click monitor icon again
+- Orientation overlay off (`Overlays menu > Face Orientation`)
+![end](./images/28Blender2-15.png)
+- Save your work (`Ctrl + S`)
 
 ---
 
