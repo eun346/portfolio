@@ -1,6 +1,6 @@
 ---
 title: Blender Tutorial
-published: 2025-08-07
+published: 2025-08-08
 description: Blender Basics & Floor Plan
 image: "./images/0cover.png"
 tags: [Blender, 3D Modeling, Floor Plan]
