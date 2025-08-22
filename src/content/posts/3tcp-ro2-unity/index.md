@@ -31,6 +31,7 @@ draft: false
 # Materials
 - Github
     > [ROS TCP Endpoint](https://github.com/Unity-Technologies/ROS-TCP-Endpoint?tab=readme-ov-file) 
+
     > [ROS TCP Connector](https://github.com/Unity-Technologies/ROS-TCP-Connector)
 - ROS (I used Ubuntu 22.04 with ROS2 Humble)
 - Unity v.2020.2+
@@ -56,9 +57,13 @@ source install/setup.bash
 ```bash
 ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=192.168.0.5
 ```
-    - If you're running ROS in a Docker container, 0.0.0.0 is a valid incoming address, so you can write `ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=0.0.0.0`
-    - On Linux you can find out your IP address with the command `hostname -I`
-    - On MacOS you can find out your IP address with `ipconfig getifaddr en0`
+
+- If you're running ROS in a Docker container, 0.0.0.0 is a valid incoming address, so you can write
+  `ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=0.0.0.0`
+- On Linux you can find out your IP address with the command `hostname -I`
+- On MacOS you can find out your IP address with `ipconfig getifaddr en0`
+
+---
 Once the server_endpoint has started, it will print something similar to `[INFO] [1603488341.950794]: Starting server on 192.168.50.149:10000`.
 (Alternative) If you need the server to listen on a port that's different from the default 10000, here's the command line to also set the ROS_TCP_PORT parameter:
 ```bash
@@ -77,25 +82,69 @@ ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=127.0.0.
 
 ## ROS Unity Integration
 ### Publisher
-![publisher](./images/publisher.gif)
-- Unity publishes data (e.g., robot position coordinates) to a ROS 2 topic, which a ROS subscriber receives.
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/oeHS8G2DeYs" title="Ball Interaction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+> Unity publishes data (e.g., robot position coordinates) to a ROS 2 topic, which a ROS subscriber receives.
+
+**Concept**: Unity can act as a Publisher, sending data continuously to a ROS topic.
+**Typical Use Case**: Streaming an object’s position, velocity, or any sensor-like data from Unity to ROS.
+**Unity Side**: You use the ROSConnection component to define the topic and message type, then call Publish() inside a Unity script.
+**ROS Side**: A ROS node subscribes to the same topic to consume Unity’s data.
 
 ### Subscriber
-- ROS2 publishes a topic to change the color, and Unity subscribes to that topic to update it.
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/TqKIByLq1NI" title="Ball Interaction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+> ROS2 publishes a topic to change the color, and Unity subscribes to that topic to update it.
+
+**Concept**: Unity can also subscribe to ROS topics and react when messages arrive.
+**Typical Use Case**: ROS publishes sensor data or control commands, and Unity updates its simulation accordingly (e.g., changing color, triggering animations).
+**Unity Side**: In Unity, you register a callback for a topic using Subscribe<T>().
+**ROS Side**: A ROS node publishes messages to that topic.
 
 ### Service
-- Unity (Service Client) request an object’s pose in Unity.
-- ROS (Service Server) calculates its pose and responds to Unity.
+![service](./images/5service.png)
+> Unity (Service Client) request an object’s pose in Unity.
+> ROS (Service Server) calculates its pose and responds to Unity.
+
+**Concept**: Unlike Publishers/Subscribers, a Service works as a request–response pattern.
+**Typical Use Case**: When Unity needs a precise answer at a specific moment.
+**Unity as Service Client**: Unity sends a request, e.g., “What’s the pose of this object?”
+**ROS as Service Server**: ROS computes the answer and returns it.
 
 ### Service Call
-1. Start at current position
-2. Move toward destination
-3. Near target → Request update from ROS
-4. Get new destination
-5. Repeat
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/Jf0TovLSnvA" title="Ball Interaction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  1. Start at current position
+  2. Move toward destination
+  3. Near target → Request update from ROS
+  4. Get new destination
+  5. Repeat
+
+**Concept**: A Service Call can be repeated in sequence to drive a process step by step.
+**Typical Use Case**: Unity moves an object toward a goal. Once near the target, Unity requests a new goal from ROS, receives it, and continues.
+
+> Note: While Publisher and Subscriber cover most real-time data flows, Services shine when you need precise, one-off information. The Service Call tutorial illustrates how even a simple request–response can orchestrate dynamic behavior when chained together.
+
+> In practice, you’ll often combine these: Publishers for streaming state, Subscribers for reacting to commands, and Services for exact queries. The key is to choose the right communication model for the task at hand.
 
 ## Robotics Nav2 SLAM Example
 ### Running 
+- Clone the repo and launch the ROS 2 + SLAM system via launch_example.py
 
 ### Visualization
+- DefaultVisualizationSuite
+    - GoalPose [topic] for robot position
+    - OccupancyGridVisualizer for SLAM map
+    - LaserScanDefaultVisualizer for LIDAR
 
+
+# Errors
+## ROS Error
+**Colcon Build**
+- Wrong package name: ROS-TCP-Endpoint-main → ros_tcp_endpoint
+- Wrong build location: colcon build inside Robotics-Nav2-SLAM-Example → Robotics-Nav2-SLAM-Example/ros2_docker/colcon_ws
+
+**Not Connected to Unity**
+- Wrong Wi-Fi
+- Wrong ROS IP Address
+
+## Unity Error
+**`DeserializationException: Cannot deserialize message`**
+- Rebuild msg files

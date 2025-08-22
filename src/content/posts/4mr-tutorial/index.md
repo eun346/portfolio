@@ -134,7 +134,6 @@ Plane and Volume in `OVRSceneManager` enables scene understanding so your virtua
 ![ballcode](./images/13ball1.png)
 - Go `RightHandAnchor → Add Component` and create a **BallInteraction** component.
 - Copy and paste the below script.
-````BallInteraction
 ```csharp
 using System.Collections;
 using System.Collections.Generic;
@@ -156,7 +155,7 @@ public class BallInteraction : MonoBehaviour
     }
 }
 ```
-````
+
 💡 Why: 
 This script lets you spawn and throw balls from your right hand trigger.
 
