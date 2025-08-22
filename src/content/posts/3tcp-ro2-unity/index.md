@@ -30,7 +30,7 @@ draft: false
 ---
 # Materials
 - Github
-    > [ROS TCP Endpoint](https://github.com/Unity-Technologies/ROS-TCP-Endpoint?tab=readme-ov-file)
+    > [ROS TCP Endpoint](https://github.com/Unity-Technologies/ROS-TCP-Endpoint?tab=readme-ov-file) 
     > [ROS TCP Connector](https://github.com/Unity-Technologies/ROS-TCP-Connector)
 - ROS (I used Ubuntu 22.04 with ROS2 Humble)
 - Unity v.2020.2+
@@ -54,7 +54,7 @@ source install/setup.bash
 ```
 3. In your Colcon workspace, run the following command, replacing `<your IP address>` with your ROS machine's IP or hostname.
 ```bash
-ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=<your IP address>
+ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=192.168.0.5
 ```
     - If you're running ROS in a Docker container, 0.0.0.0 is a valid incoming address, so you can write `ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=0.0.0.0`
     - On Linux you can find out your IP address with the command `hostname -I`

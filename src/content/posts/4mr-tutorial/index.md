@@ -156,6 +156,7 @@ public class BallInteraction : MonoBehaviour
     }
 }
 ```
+````
 💡 Why: 
 This script lets you spawn and throw balls from your right hand trigger.
 
