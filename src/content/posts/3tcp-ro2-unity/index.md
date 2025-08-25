@@ -7,6 +7,11 @@ category: Tutorial
 draft: false 
 ---
 
+# ROS TCP
+ROS2 is often seen as the robot’s **brain**, while Unity serves as the **eyes and environment**. To simulate realistic robotics behavior, we need a bridge between them. That bridge is the **ROS-TCP Endpoint/Connector**. By connecting both, we can test navigation, visualization, and SLAM in a controlled environment before deploying to real hardware.  
+
+---
+
 # Understanding the Basics
 **ROS TCP Endpoint/Connector**
 ![rostcp](./images/1rostcp.png)
@@ -28,6 +33,7 @@ draft: false
 - **Example**: A robot uses LIDAR to create a 2D occupancy grid in RViz, visualized in Unity.
 
 ---
+
 # Materials
 - Github
     > [ROS TCP Endpoint](https://github.com/Unity-Technologies/ROS-TCP-Endpoint?tab=readme-ov-file) 
@@ -127,15 +133,87 @@ ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=127.0.0.
 > In practice, you’ll often combine these: Publishers for streaming state, Subscribers for reacting to commands, and Services for exact queries. The key is to choose the right communication model for the task at hand.
 
 ## Robotics Nav2 SLAM Example
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/atLGOWf3JpI" title="Ball Interaction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/IOTopMyFSew" title="Ball Interaction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ### Running 
-- Clone the repo and launch the ROS 2 + SLAM system via launch_example.py
+- Clone the [Nav2 SLAM Example](https://github.com/Unity-Technologies/Robotics-Nav2-SLAM-Example/tree/main) and run:
+```bash
+git clone https://github.com/Unity-Technologies/Robotics-Nav2-SLAM-Example.git
+cd Robotics-Nav2-SLAM-Example/ros2_docker/colcon_ws
+```
+➡️ Expected Output: A 2D occupancy grid in RViz showing the robot’s map, with real-time updates as it navigates. You can extend this with custom visualization (e.g., battery status, camera feeds).
 
-### Visualization
-- DefaultVisualizationSuite
-    - GoalPose [topic] for robot position
-    - OccupancyGridVisualizer for SLAM map
-    - LaserScanDefaultVisualizer for LIDAR
+### Visualization & Custom Visualizer
+DefaultVisualizationSuite includes:
+- GoalPose → Robot position (topic-based).
+- OccupancyGridVisualizer → SLAM map.
+- LaserScanSensor → LiDAR scan.
 
+You also need to add the following code in your Unity.
+
+```csharp
+using System;
+using System.Collections.Generic;
+using RosMessageTypes.Geometry;                     // Generated message classes
+using Unity.Robotics.Visualizations;                // Visualizations
+using Unity.Robotics.ROSTCPConnector.ROSGeometry;   // Coordinate space utilities
+using UnityEngine;
+
+public class PoseTrailVisualizer : HistoryDrawingVisualizer<PoseStampedMsg>
+{
+    [SerializeField]
+    Color m_Color = Color.white;
+    [SerializeField]
+    float m_Thickness = 0.1f;
+    [SerializeField]
+    string m_Label = "";
+
+    public override Action CreateGUI(IEnumerable<Tuple<PoseStampedMsg, MessageMetadata>> messages)
+    {
+        return () =>
+        {
+            var count = 0;
+            foreach (var (message, meta) in messages)
+            {
+                GUILayout.Label($"Goal #{count}:");
+                message.pose.GUI();
+                count++;
+            }
+        };
+    }
+
+    public override void Draw(Drawing3d drawing, IEnumerable<Tuple<PoseStampedMsg, MessageMetadata>> messages)
+    {
+        var firstPass = true;
+        var prevPoint = Vector3.zero;
+        var color = Color.white;
+        var label = "";
+
+        foreach (var (msg, meta) in messages)
+        {
+            var point = msg.pose.position.From<FLU>();
+            if (firstPass)
+            {
+                color = VisualizationUtils.SelectColor(m_Color, meta);
+                label = VisualizationUtils.SelectLabel(m_Label, meta);
+                firstPass = false;
+            }
+            else
+            {
+                drawing.DrawLine(prevPoint, point, color, m_Thickness);
+            }
+
+            prevPoint = point;
+        }
+
+        drawing.DrawLabel(label, prevPoint, color);
+    }
+}
+```
+
+---
 
 # Errors
 ## ROS Error
