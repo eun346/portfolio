@@ -10,22 +10,22 @@ draft: false
 # Understanding the Basics
 **ROS TCP Endpoint/Connector**
 ![rostcp](./images/1rostcp.png)
-- Def: A ROS node that enables message passing over TCP between ROS2 and external systems like Unity
-- Purpose: : Facilitates real-time communication for robotics simulations and visualizations
-- Example: A ROS node sends robot position data to Unity, which renders the robot in a 3D environment
+- **Def**: A ROS node that enables message passing over TCP between ROS2 and external systems like Unity
+- **Purpose**: : Facilitates real-time communication for robotics simulations and visualizations
+- **Example**: A ROS node sends robot position data to Unity, which renders the robot in a 3D environment
 
 **ROS-Unity Communication**
 ![rosUnityComm](./images/2rosUnity.png)
 > Image Source: [MDPI](https://www.mdpi.com/1424-8220/24/17/5680)
-- Def: The broader process of how ROS 2 and Unity interact, using the TCP Endpoint/Connector to exchange data via topics, services, or actions.
-- Example: Unity subscribes to a ROS topic (/robot_color) to change a robot’s color, or ROS responds to a Unity service request with a robot’s pose.
+- **Def**: The broader process of how ROS 2 and Unity interact, using the TCP Endpoint/Connector to exchange data via topics, services, or actions.
+- **Example**: Unity subscribes to a ROS topic (/robot_color) to change a robot’s color, or ROS responds to a Unity service request with a robot’s pose.
 
 **SLAM (Simultaneous Localization & Mapping)**
 ![slam](./images/3slam.png)
 > Image Source: [LASER_Scanning](https://www.laserscanning-europe.com/en/what-slam) and [KODIFLY](https://kodifly.com/what-is-slam-a-beginner-to-expert-guide)
-- Def: A method for robots to build a map of an unknown environment while tracking their location within it.
-- Applications: Autonomous navigation, 3D map reconstruction, obstacle avoidance.
-- Example: A robot uses LIDAR to create a 2D occupancy grid in RViz, visualized in Unity.
+- **Def**: A method for robots to build a map of an unknown environment while tracking their location within it.
+- **Applications**: Autonomous navigation, 3D map reconstruction, obstacle avoidance.
+- **Example**: A robot uses LIDAR to create a 2D occupancy grid in RViz, visualized in Unity.
 
 ---
 # Materials
@@ -83,6 +83,7 @@ ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=127.0.0.
 ## ROS Unity Integration
 ### Publisher
 <iframe width="100%" height="468" src="https://www.youtube.com/embed/oeHS8G2DeYs" title="Ball Interaction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 > Unity publishes data (e.g., robot position coordinates) to a ROS 2 topic, which a ROS subscriber receives.
 
 **Concept**: Unity can act as a Publisher, sending data continuously to a ROS topic.
@@ -92,6 +93,7 @@ ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=127.0.0.
 
 ### Subscriber
 <iframe width="100%" height="468" src="https://www.youtube.com/embed/TqKIByLq1NI" title="Ball Interaction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 > ROS2 publishes a topic to change the color, and Unity subscribes to that topic to update it.
 
 **Concept**: Unity can also subscribe to ROS topics and react when messages arrive.
@@ -121,7 +123,7 @@ ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=127.0.0.
 **Typical Use Case**: Unity moves an object toward a goal. Once near the target, Unity requests a new goal from ROS, receives it, and continues.
 
 > Note: While Publisher and Subscriber cover most real-time data flows, Services shine when you need precise, one-off information. The Service Call tutorial illustrates how even a simple request–response can orchestrate dynamic behavior when chained together.
-
+> 
 > In practice, you’ll often combine these: Publishers for streaming state, Subscribers for reacting to commands, and Services for exact queries. The key is to choose the right communication model for the task at hand.
 
 ## Robotics Nav2 SLAM Example
